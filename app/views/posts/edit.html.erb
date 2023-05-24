@@ -1,0 +1,15 @@
+<div class="flex justify-center items-center">
+    <section class="border rounded-lg p-5 flex flex-col">
+    <%= form_with model: @post do |form| %> 
+    <div>
+        <%= form.label :title %> <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :content %> <%= form.text_area :content %>
+    </div>
+    <div>
+        <%= form.submit '수정' %>
+    </div> 
+     <% end %>
+    </section>
+    </div>
