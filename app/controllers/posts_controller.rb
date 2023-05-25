@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :set_posts, only: [:edit, :update, :destroy]
+
     def index
         @posts = Post.all
         puts 1.0
@@ -14,7 +15,6 @@ class PostsController < ApplicationController
     end
 
     def update
-
         if @post.update(post_params)
             redirect_to posts_path
         else
@@ -23,7 +23,6 @@ class PostsController < ApplicationController
     end
 
     def destroy
-
         @post.destroy
         redirect_to posts_path
     end
@@ -42,7 +41,6 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
 
     end
-
 
     private
 

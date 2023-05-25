@@ -6,16 +6,24 @@
     <% @posts.map do |post| %>
 <li>
     <div>
-    <h2 class="text-[18px] font-bold"><%= post.title %></h2>
+    <a class="text-[18px] font-bold" href="<%= edit_post_path(post) %>"><%= post.title %></a>
     <p><%= post.content %></p>
     <span>
-        <small class="text-grey"><%= post.created_at %></small>
+        <%  def calculate(num)
+        if num < 10
+            return "0#{num}"
+        else
+            return num
+        end
+    end
+        %>
+        <small class="text-grey"><%= post.created_at.year %>-<%= calculate(post.created_at.month) %>-<%= post.created_at.day %> <%= calculate(post.created_at.hour) %>:<%=post.created_at.min %></small>
     </span>
 </div>
-<div class="flex justify-end"><%= link_to "수정", edit_post_path(post), class: "bg-green-500 text-white px-2 py-1" %></div>
-
 <div>
-    <%= button_to "삭제", post_path(post), method: :delete, class: "bg-red-500 text-white px-2 py-1" %>
+    <%= button_to "삭제", post_path(post), method: :delete, data: {
+        turbo_confirm: "해당 게시글을 삭제하시겠습니까?"
+      }, class: "bg-red-500 text-white px-2 py-1" %>
 </div>
 </li>
     <% end %>

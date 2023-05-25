@@ -1,0 +1,11 @@
+<%= form_with model: post, buttonName: buttonName do |form| %> 
+            <div>
+                <%= form.label :title %> <%= form.text_field :title %>
+            </div>
+            <div>
+                <%= form.label :content %> <%= form.text_area :content %>
+            </div>
+            <div>
+                <%= form.submit buttonName, class: "cursor-pointer bg-green-500" %>
+            </div> 
+        <% end %>
